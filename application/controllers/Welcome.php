@@ -45,7 +45,7 @@ class Welcome extends CI_Controller {
 		date_default_timezone_set("Asia/Bangkok");
 		$tanggal = date("Y-m-d");
 		// echo "<br>";
-		$clock = date("H:i");
+		$clock = date("H:i:"."00");
 
 		switch ($button) {
 			case 'masuk1':
@@ -63,7 +63,9 @@ class Welcome extends CI_Controller {
 					$this->db->insert('absensi', $data);
 				}
 
-				echo str_replace(":00","",$clock);
+				$t = explode(":",$clock);
+				echo $t[0].":".$t[1];
+				// echo str_replace(":00","",$clock);
 				break;
 			case 'istirahat':
 				$query = $this->db->query("select jam_out1 from absensi where absensi = '$nama' AND tanggal = '$tanggal'");
@@ -78,7 +80,9 @@ class Welcome extends CI_Controller {
 				} else if ($num == 0) {
 				}
 
-				echo str_replace(":00", "", $clock);
+				$t = explode(":",$clock);
+				echo $t[0].":".$t[1];
+				// echo str_replace(":00", "", $clock);
 				break;
 			case 'masuk2':
 				$query = $this->db->query("select jam_in2 from absensi where absensi = '$nama' AND tanggal = '$tanggal'");
@@ -93,7 +97,9 @@ class Welcome extends CI_Controller {
 				} else if ($num == 0) {
 				}
 
-				echo str_replace(":00", "", $clock);
+				$t = explode(":",$clock);
+				echo $t[0].":".$t[1];
+				// echo str_replace(":00", "", $clock);
 				break;
 			case 'pulang':
 				$query = $this->db->query("select jam_out2 from absensi where absensi = '$nama' AND tanggal = '$tanggal'");
@@ -108,7 +114,9 @@ class Welcome extends CI_Controller {
 				} else if ($num == 0) {
 				}
 
-				echo str_replace(":00", "", $clock);
+				$t = explode(":",$clock);
+				echo $t[0].":".$t[1];
+				// echo str_replace(":00", "", $clock);
 				break;
 
 			default:
